@@ -43,6 +43,7 @@ for user, pwd in USERS.items():
         break
 if not registered:
     print("Invalid login details.")
+    quit()
 print(f"Welcome to the app, {username}")
 print(f"\nWe have {len(TEXTS)} texts to be analyzed.", oddelovac, sep="\n")
 choice = input(f"Enter a number from 1 to {len(TEXTS)} to select: ")
@@ -50,11 +51,12 @@ print(oddelovac, sep="\n")
 choice = int(choice)
 if choice < 1 or choice> len(TEXTS):
     print(f"Your number is not in the list")
-    quit
+    quit()
 
 text = TEXTS[choice - 1]
 raw_words = text.split()
 
+words = []
 for raw in raw_words:
     cleaned = ""
     for char in raw:
@@ -89,7 +91,7 @@ print(f"There are {lowercase_count} lowercase words.")
 print(f"There are {number_count} numeric strings.")
 print(f"The sum of all the numbers {number_sum}.", oddelovac, sep="\n")
 
-words = text.split()
+
 word_lengths = [len(word.strip('.,!?";:()[]{}')) for word in words]
 length_counts = {}
 
